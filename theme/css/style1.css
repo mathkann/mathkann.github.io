@@ -74,9 +74,19 @@ body {
     margin-right: 3px;
 }
 
+a, a:hover {
+    color: inherit;
+}
 
+.entry-content a {
+    text-decoration: none;
+    border-bottom: 1px dotted;
+}
 
-
+.entry-content a:hover {
+    text-decoration: none;
+    border-bottom: 1px solid;
+}
 
 .entry-content img {
     max-width: 100%;
@@ -93,10 +103,6 @@ body {
     height: auto;
 }
 
-.page-header a {
-    text-decoration: none;
-    color: inherit;    
-}
 
 .floatright, .align-right {
     float: right;
