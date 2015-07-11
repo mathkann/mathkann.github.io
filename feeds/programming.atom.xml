@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Data Sense</title><link href="http://mathusuthan.ml/" rel="alternate"></link><link href="http://mathusuthan.ml/feeds/programming.atom.xml" rel="self"></link><id>http://mathusuthan.ml/</id><updated>2015-07-10T10:20:00+02:00</updated><entry><title>Effective Python - A Quick Review</title><link href="http://mathusuthan.ml/effective-python-a-quick-review.html" rel="alternate"></link><updated>2015-07-10T10:20:00+02:00</updated><author><name>Mathusuthan N Kannan</name></author><id>tag:mathusuthan.ml,2015-07-10:effective-python-a-quick-review.html</id><summary type="html">&lt;p&gt;Following in the tradition of the books Effective Java and Effective C++, we 
+now have one for Python too.  &lt;a href="http://www.effectivepython.com/"&gt;Effective Python&lt;/a&gt; by Brett Slatkin is a book that I wish had 
+been available long ago. There are 59 tips organized into 8 different chapters. The idea is you choose 
+which topic you want to read about. The organization is neat and effective &amp;#8230;(pun&amp;nbsp;unintended)&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://www.effectivepython.com/images/cover.jpg" width="250" height="350" alt="EFfective Python Book Cover"&gt;&lt;/p&gt;
+&lt;p&gt;For me, coming to Python from a Java / C# background, 
+it was always a matter of just writing Python code that works &amp;#8230; No best practices or patterns,
+just write anything that works. The thing is Python is very forgiving and one has many different 
+ways to achieve the same goal. Any time my code was slow, it was easy to just blame it on&amp;nbsp;Python.&lt;/p&gt;
+&lt;p&gt;But the beauty of Python is it has many libraries and tools available for 
+whatever one wants to use it for. And a programming language cannot be judged 
+just on its performance but more importantly on how expressive it is and how it 
+helps the developers to make efficient use of their time. While there are reasons 
+for &lt;a href="https://jakevdp.github.io/blog/2014/05/09/why-python-is-slow/"&gt;why Python is slow&lt;/a&gt; 
+, there is no reason why one cannot try to write effective and elegant code. That is where 
+&lt;a href="http://www.effectivepython.com/"&gt;Effective Python&lt;/a&gt; is a great help. I could go on and try to 
+explain what is in the book, but check out the &lt;a href="http://www.effectivepython.com/"&gt;book&amp;#8217;s website&lt;/a&gt; and 
+the code snippets from the book in &lt;a href="https://github.com/bslatkin/effectivepython"&gt;Github&lt;/a&gt; for more&amp;nbsp;info.&lt;/p&gt;</summary><category term="books"></category><category term="python"></category></entry></feed>
