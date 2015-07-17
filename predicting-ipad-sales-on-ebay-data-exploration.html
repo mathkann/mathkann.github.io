@@ -475,10 +475,10 @@ Data Sense            </a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p>As part of the latest run of the <a href="">The Analytics Edge</a> <span class="caps">MOOC</span> on edX, a <a href="https://inclass.kaggle.com/c/15-071x-the-analytics-edge-summer-2015">modelling competition</a> was launched on Kaggle. The objective of the competition is to predict what makes an eBay listing successful? The challenge is to develop an analytics model that will help buyers and sellers predict the sales success of a set of eBay listings for Apple iPads from spring&nbsp;2015.</p>
+                <p>As part of the latest run of the <a href="https://courses.edx.org/courses/course-v1:MITx+15.071x_2a+2T2015/info">The Analytics Edge</a> <span class="caps">MOOC</span> on edX, a <a href="https://inclass.kaggle.com/c/15-071x-the-analytics-edge-summer-2015">modelling competition</a> was launched on Kaggle. The objective of the competition is to predict what makes an eBay listing successful? The challenge is to develop an analytics model that will help buyers and sellers predict the sales success of a set of eBay listings for Apple iPads from spring&nbsp;2015.</p>
 <p>This post does a initial data exploration of the data provided. The analysis is done using the R language. Further posts performing more analysis of the data and a predictive model will&nbsp;follow.</p>
 <h2 id="let-us-begin">Let us&nbsp;begin</h2>
-<h5 id="code"><span class="caps">CODE</span></h5>
+<h5 id="code">Code</h5>
 <div class="highlight"><pre><span class="c1"># loading the required libraries</span>
 <span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
 <span class="kn">library</span><span class="p">(</span>dplyr<span class="p">)</span>
@@ -492,7 +492,7 @@ str<span class="p">(</span>train<span class="p">)</span>
 </pre></div>
 
 
-<h5 id="output"><span class="caps">OUTPUT</span></h5>
+<h5 id="output">Output</h5>
 <div class="highlight"><pre>## &#39;data.frame&#39;:    1861 obs. of  11 variables:
 ##  $ description: chr  &quot;iPad is in 8.5+ out of 10 cosmetic condition!&quot; &quot;Previously used, 
     please read description. May show signs of use such as scratches to the screen and 
@@ -510,13 +510,13 @@ str<span class="p">(</span>train<span class="p">)</span>
 </pre></div>
 
 
-<h5 id="code_1"><span class="caps">CODE</span></h5>
+<h5 id="code_1">Code</h5>
 <div class="highlight"><pre><span class="c1"># quick view of the structure of the test data                                                      </span>
 str<span class="p">(</span>test<span class="p">)</span>
 </pre></div>
 
 
-<h5 id="output_1"><span class="caps">OUTPUT</span></h5>
+<h5 id="output_1">Output</h5>
 <div class="highlight"><pre>## &#39;data.frame&#39;:    798 obs. of  10 variables:
 ##  $ description: chr  &quot;like new&quot; &quot;Item is in great shape. I upgraded to the iPad Air 2 
    and don&amp;#039;t need the mini any longer, even though &quot; &quot;This iPad is working and is 
@@ -533,7 +533,7 @@ str<span class="p">(</span>test<span class="p">)</span>
 </pre></div>
 
 
-<h5 id="code_2"><span class="caps">CODE</span></h5>
+<h5 id="code_2">Code</h5>
 <div class="highlight"><pre><span class="c1"># create a list to hold the columns that are categorical</span>
 categoric_vars <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;biddable&quot;</span><span class="p">,</span> <span class="s">&quot;condition&quot;</span><span class="p">,</span> <span class="s">&quot;cellular&quot;</span><span class="p">,</span> <span class="s">&quot;carrier&quot;</span><span class="p">,</span> <span class="s">&quot;color&quot;</span><span class="p">,</span> 
                    <span class="s">&quot;storage&quot;</span> <span class="p">,</span> <span class="s">&quot;productline&quot;</span><span class="p">,</span> <span class="s">&quot;sold&quot;</span><span class="p">)</span>
@@ -582,7 +582,7 @@ listed as &#8220;None&#8221; if&nbsp;cellular=0.</p>
 </li>
 </ul>
 <p>Let us combine the two datasets and then covert the categorical columns to&nbsp;factors. </p>
-<h5 id="code_3"><span class="caps">CODE</span></h5>
+<h5 id="code_3">Code</h5>
 <div class="highlight"><pre><span class="c1"># Create sold  column in test before we can merge into train</span>
 test<span class="o">$</span>sold <span class="o">=</span> <span class="m">0</span>   <span class="c1"># column to be predicted</span>
 
@@ -598,7 +598,7 @@ combined <span class="o">=</span> <span class="kp">rbind</span><span class="p">(
 <p>The combined data-frame has 2659 rows. Now let us convert the 
 categorical variables which are currently of numeric and character data types
 in the R data-frames into&nbsp;factors.</p>
-<h5 id="code_4"><span class="caps">CODE</span></h5>
+<h5 id="code_4">Code</h5>
 <div class="highlight"><pre><span class="c1"># Use lapply to covert the columns in the categoric_vars list to factor</span>
 combined<span class="p">[,</span> categoric_vars<span class="p">]</span> <span class="o">=</span> <span class="kp">lapply</span><span class="p">(</span>combined<span class="p">[,</span> categoric_vars<span class="p">],</span> <span class="kp">as.factor</span><span class="p">)</span>
 
@@ -607,7 +607,7 @@ combined<span class="p">[,</span> categoric_vars<span class="p">]</span> <span c
 </pre></div>
 
 
-<h5 id="output_2"><span class="caps">OUTPUT</span></h5>
+<h5 id="output_2">Output</h5>
 <div class="highlight"><pre>##  biddable                    condition       cellular        carrier    
 ##  0:1446   For parts or not working: 264   0      :1595   AT&amp;T    : 292  
 ##  1:1213   Manufacturer refurbished:  55   1      : 723   None    :1599  
@@ -627,13 +627,13 @@ combined<span class="p">[,</span> categoric_vars<span class="p">]</span> <span c
 </pre></div>
 
 
-<h5 id="code_5"><span class="caps">CODE</span></h5>
+<h5 id="code_5">Code</h5>
 <div class="highlight"><pre><span class="c1"># check how many rows have description</span>
 <span class="kp">table</span><span class="p">(</span>combined<span class="o">$</span>description <span class="o">!=</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 
 
-<h5 id="output_3"><span class="caps">OUTPUT</span></h5>
+<h5 id="output_3">Output</h5>
 <div class="highlight"><pre>## 
 ## FALSE  TRUE 
 ##  1521  1138
@@ -643,7 +643,7 @@ combined<span class="p">[,</span> categoric_vars<span class="p">]</span> <span c
 <h2 id="visualizing-the-data">Visualizing the&nbsp;Data</h2>
 <p>Since we want to predict if a listed iPad was sold or not, let us look at a few 
 visualizations of the features vs. the response variable <code>sold</code></p>
-<h5 id="code_6"><span class="caps">CODE</span></h5>
+<h5 id="code_6">Code</h5>
 <div class="highlight"><pre><span class="c1"># split the combined data-frame into train and test</span>
 train <span class="o">=</span> filter<span class="p">(</span>combined<span class="p">,</span> UniqueID <span class="o">%in%</span> train_ids<span class="p">)</span>
 test <span class="o">=</span> filter<span class="p">(</span>combined<span class="p">,</span> UniqueID <span class="o">%in%</span> test_ids<span class="p">)</span>
@@ -671,7 +671,7 @@ are&nbsp;sold.</p>
 <p>Let us do one for <code>carriers</code> vs. <code>sold</code>. Since  we have more than three carriers 
 to display the labels properly, we can move the <code>sold</code> to the x-axis 
 and carrier to the&nbsp;y-axis.</p>
-<h5 id="code_7"><span class="caps">CODE</span></h5>
+<h5 id="code_7">Code</h5>
 <div class="highlight"><pre><span class="c1"># carrier vs sold</span>
 ggMMplot<span class="p">(</span>train<span class="o">$</span>sold<span class="p">,</span> train<span class="o">$</span>carrier<span class="p">,</span> <span class="s">&quot;Proportion Sold&quot;</span><span class="p">,</span> 
                         <span class="s">&quot;Proportion of Carriers&quot;</span><span class="p">,</span> <span class="s">&quot;Carriers&quot;</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
@@ -680,28 +680,26 @@ ggMMplot<span class="p">(</span>train<span class="o">$</span>sold<span class="p"
 
 <p><img alt="Carrier Vs. Sold" src="../images/viz/ebayipad1-carriervssold-1.png" /> </p>
 <p>We can create plots similarly for other features against the outcome <code>sold</code>.</p>
-<h5 id="code_8"><span class="caps">CODE</span></h5>
+<h5 id="code_8">Code</h5>
 <div class="highlight"><pre><span class="c1"># cellular vs sold</span>
 ggMMplot<span class="p">(</span>train<span class="o">$</span>sold<span class="p">,</span> train<span class="o">$</span>cellular<span class="p">,</span> <span class="s">&quot;Proportion Sold&quot;</span><span class="p">,</span> <span class="s">&quot;Cellular&quot;</span><span class="p">,</span><span class="s">&quot;Sold&quot;</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
 </pre></div>
 
 
 <p><img alt="Cellular Vs. Sold" src="../images/viz/ebayipad1-features_sold2-1.png" /> </p>
-<h5 id="code_9"><span class="caps">CODE</span></h5>
+<h5 id="code_9">Code</h5>
 <div class="highlight"><pre><span class="c1"># color vs sold</span>
 ggMMplot<span class="p">(</span>train<span class="o">$</span>sold<span class="p">,</span> train<span class="o">$</span>color<span class="p">,</span> <span class="s">&quot;Proportion Sold&quot;</span><span class="p">,</span> <span class="s">&quot;Color&quot;</span><span class="p">,</span> <span class="s">&quot;Sold&quot;</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
 </pre></div>
 
 
 <p><img alt="Color Vs. Sold" src="../images/viz/ebayipad1-features_sold2-2.png" /> </p>
-<p>Similar visualizations can be done for other categorical features. We can 
-observe that all of the categorical features have an effect on whether the 
-listing was successful (<em>as was expected</em>).</p>
+<p>Similar visualizations can be done for other categorical&nbsp;features. </p>
 <p>Let us now try to visualize the only numerical feature <code>startprice</code> against the 
 response variable <code>sold</code>. A histogram for <code>startprice</code> against the two different 
 values in <code>sold</code> would do just fine. But we also need to take care of the fact 
 that this will work only for the fixed price&nbsp;biddings. </p>
-<h5 id="code_10"><span class="caps">CODE</span></h5>
+<h5 id="code_10">Code</h5>
 <div class="highlight"><pre><span class="c1"># get the fixed price listings </span>
 fixedprice.listings <span class="o">=</span> filter<span class="p">(</span>train<span class="p">,</span> biddable <span class="o">==</span> <span class="s">&quot;Fixed&quot;</span><span class="p">)</span>
 
@@ -720,7 +718,7 @@ pricehist.plt
 and unsold listings are almost the same &#8230; But since the number of sold and unsold 
 listings are unequal, it would be better to have a histogram with densities instead 
 of counts to make comparison&nbsp;easier.</p>
-<h5 id="code_11"><span class="caps">CODE</span></h5>
+<h5 id="code_11">Code</h5>
 <div class="highlight"><pre><span class="c1"># plot a histogram of the prices facetted on value of sold</span>
 pricehist_d.plt <span class="o">=</span> ggplot<span class="p">(</span>fixedprice.listings<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> startprice<span class="p">))</span> <span class="o">+</span> 
   geom_histogram<span class="p">(</span>binwidth <span class="o">=</span> <span class="m">100</span><span class="p">,</span> colour <span class="o">=</span> <span class="s">&quot;white&quot;</span><span class="p">,</span> fill <span class="o">=</span> <span class="s">&quot;orange&quot;</span><span class="p">)</span> <span class="o">+</span> 
@@ -826,18 +824,13 @@ discuss a implementation using open-source JavaScript libraries in my next&nbsp;
                         </a>
                     </li>
                     <li class="list-group-item tag-4">
-                        <a href="http://mathusuthan.ml/tag/kaggle.html">
-                            kaggle
+                        <a href="http://mathusuthan.ml/tag/courseware.html">
+                            courseware
                         </a>
                     </li>
                     <li class="list-group-item tag-4">
-                        <a href="http://mathusuthan.ml/tag/machine-learning.html">
-                            machine learning
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="http://mathusuthan.ml/tag/visualization.html">
-                            visualization
+                        <a href="http://mathusuthan.ml/tag/data-science.html">
+                            data science
                         </a>
                     </li>
                     <li class="list-group-item tag-4">
@@ -851,13 +844,18 @@ discuss a implementation using open-source JavaScript libraries in my next&nbsp;
                         </a>
                     </li>
                     <li class="list-group-item tag-4">
-                        <a href="http://mathusuthan.ml/tag/data-science.html">
-                            data science
+                        <a href="http://mathusuthan.ml/tag/visualization.html">
+                            visualization
                         </a>
                     </li>
                     <li class="list-group-item tag-4">
-                        <a href="http://mathusuthan.ml/tag/courseware.html">
-                            courseware
+                        <a href="http://mathusuthan.ml/tag/kaggle.html">
+                            kaggle
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="http://mathusuthan.ml/tag/machine-learning.html">
+                            machine learning
                         </a>
                     </li>
                     <li class="list-group-item tag-4">
