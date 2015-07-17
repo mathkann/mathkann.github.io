@@ -396,7 +396,7 @@ jQuery(document).ready(function($) {
         <link rel="stylesheet" href="http://mathusuthan.ml/theme/css/bootstrap.cerulean.min.css" type="text/css"/>
     <link href="http://mathusuthan.ml/theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="http://mathusuthan.ml/theme/css/pygments/friendly.css" rel="stylesheet">
+    <link href="http://mathusuthan.ml/theme/css/pygments/monokai.css" rel="stylesheet">
         <link href="http://mathusuthan.ml/theme/css/typogrify.css" rel="stylesheet">
     <link rel="stylesheet" href="http://mathusuthan.ml/theme/css/style.css" type="text/css"/>
 
@@ -479,16 +479,7 @@ Data Sense            </a>
 <p>This post does a initial data exploration of the data provided. The analysis is done using the R language. Further posts performing more analysis of the data and a predictive model will&nbsp;follow.</p>
 <h2 id="let-us-begin">Let us&nbsp;begin</h2>
 <h5 id="code"><span class="caps">CODE</span></h5>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10</pre></div></td><td class="code"><div class="highlight"><pre><span class="c1"># loading the required libraries</span>
+<div class="highlight"><pre><span class="c1"># loading the required libraries</span>
 <span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
 <span class="kn">library</span><span class="p">(</span>dplyr<span class="p">)</span>
 
@@ -499,23 +490,10 @@ test <span class="o">=</span> read.csv<span class="p">(</span>file <span class="
 <span class="c1"># quick view of the structure of the data ...train </span>
 str<span class="p">(</span>train<span class="p">)</span>
 </pre></div>
-</td></tr></table>
+
 
 <h5 id="output"><span class="caps">OUTPUT</span></h5>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14</pre></div></td><td class="code"><div class="highlight"><pre>## &#39;data.frame&#39;:    1861 obs. of  11 variables:
+<div class="highlight"><pre>## &#39;data.frame&#39;:    1861 obs. of  11 variables:
 ##  $ description: chr  &quot;iPad is in 8.5+ out of 10 cosmetic condition!&quot; &quot;Previously used, 
     please read description. May show signs of use such as scratches to the screen and 
     &quot; &quot;&quot; &quot;&quot; ...
@@ -530,29 +508,16 @@ str<span class="p">(</span>train<span class="p">)</span>
 ##  $ sold       : int  0 1 1 0 0 1 1 0 1 1 ...
 ##  $ UniqueID   : int  10001 10002 10003 10004 10005 10006 10007 10008 10009 10010 ...
 </pre></div>
-</td></tr></table>
+
 
 <h5 id="code_1"><span class="caps">CODE</span></h5>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span class="c1"># quick view of the structure of the test data                                                      </span>
+<div class="highlight"><pre><span class="c1"># quick view of the structure of the test data                                                      </span>
 str<span class="p">(</span>test<span class="p">)</span>
 </pre></div>
-</td></tr></table>
+
 
 <h5 id="output_1"><span class="caps">OUTPUT</span></h5>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13</pre></div></td><td class="code"><div class="highlight"><pre>## &#39;data.frame&#39;:    798 obs. of  10 variables:
+<div class="highlight"><pre>## &#39;data.frame&#39;:    798 obs. of  10 variables:
 ##  $ description: chr  &quot;like new&quot; &quot;Item is in great shape. I upgraded to the iPad Air 2 
    and don&amp;#039;t need the mini any longer, even though &quot; &quot;This iPad is working and is 
    tested 100%. It runs great. It     is in good condition. Cracked digitizer.&quot; &quot;&quot; ...
@@ -566,16 +531,14 @@ str<span class="p">(</span>test<span class="p">)</span>
 ##  $ productline: chr  &quot;iPad 1&quot; &quot;iPad mini 2&quot; &quot;iPad 3&quot; &quot;iPad mini&quot; ...
 ##  $ UniqueID   : int  11862 11863 11864 11865 11866 11867 11868 11869 11870 11871 ...
 </pre></div>
-</td></tr></table>
+
 
 <h5 id="code_2"><span class="caps">CODE</span></h5>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span class="c1"># create a list to hold the columns that are categorical</span>
+<div class="highlight"><pre><span class="c1"># create a list to hold the columns that are categorical</span>
 categoric_vars <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;biddable&quot;</span><span class="p">,</span> <span class="s">&quot;condition&quot;</span><span class="p">,</span> <span class="s">&quot;cellular&quot;</span><span class="p">,</span> <span class="s">&quot;carrier&quot;</span><span class="p">,</span> <span class="s">&quot;color&quot;</span><span class="p">,</span> 
                    <span class="s">&quot;storage&quot;</span> <span class="p">,</span> <span class="s">&quot;productline&quot;</span><span class="p">,</span> <span class="s">&quot;sold&quot;</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+
 
 <h2 id="prepping-the-data">Prepping the&nbsp;Data</h2>
 <p>As can be seen, we have two datasets, <code>train</code> and <code>test</code> which are similar 
@@ -620,15 +583,7 @@ listed as &#8220;None&#8221; if&nbsp;cellular=0.</p>
 </ul>
 <p>Let us combine the two datasets and then covert the categorical columns to&nbsp;factors. </p>
 <h5 id="code_3"><span class="caps">CODE</span></h5>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="highlight"><pre><span class="c1"># Create sold  column in test before we can merge into train</span>
+<div class="highlight"><pre><span class="c1"># Create sold  column in test before we can merge into train</span>
 test<span class="o">$</span>sold <span class="o">=</span> <span class="m">0</span>   <span class="c1"># column to be predicted</span>
 
 <span class="c1"># hold on to the ids so we can easily seperate train / test rows later</span>
@@ -638,41 +593,22 @@ train_ids <span class="o">=</span> train<span class="o">$</span>UniqueID
 <span class="c1"># Combine train and test</span>
 combined <span class="o">=</span> <span class="kp">rbind</span><span class="p">(</span>train<span class="p">,</span> test<span class="p">)</span>                                 
 </pre></div>
-</td></tr></table>
+
 
 <p>The combined data-frame has 2659 rows. Now let us convert the 
 categorical variables which are currently of numeric and character data types
 in the R data-frames into&nbsp;factors.</p>
 <h5 id="code_4"><span class="caps">CODE</span></h5>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span class="c1"># Use lapply to covert the columns in the categoric_vars list to factor</span>
+<div class="highlight"><pre><span class="c1"># Use lapply to covert the columns in the categoric_vars list to factor</span>
 combined<span class="p">[,</span> categoric_vars<span class="p">]</span> <span class="o">=</span> <span class="kp">lapply</span><span class="p">(</span>combined<span class="p">[,</span> categoric_vars<span class="p">],</span> <span class="kp">as.factor</span><span class="p">)</span>
 
 <span class="c1"># view a summary of the categorical variables</span>
 <span class="kp">summary</span><span class="p">(</span>combined<span class="p">[,</span> categoric_vars<span class="p">])</span>
 </pre></div>
-</td></tr></table>
+
 
 <h5 id="output_2"><span class="caps">OUTPUT</span></h5>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16</pre></div></td><td class="code"><div class="highlight"><pre>##  biddable                    condition       cellular        carrier    
+<div class="highlight"><pre>##  biddable                    condition       cellular        carrier    
 ##  0:1446   For parts or not working: 264   0      :1595   AT&amp;T    : 292  
 ##  1:1213   Manufacturer refurbished:  55   1      : 723   None    :1599  
 ##           New                     : 402   Unknown: 341   Other   :   6  
@@ -689,43 +625,26 @@ combined<span class="p">[,</span> categoric_vars<span class="p">]</span> <span c
 ##                                   iPad Air 2:233           
 ##                                   (Other)   :733
 </pre></div>
-</td></tr></table>
+
 
 <h5 id="code_5"><span class="caps">CODE</span></h5>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span class="c1"># check how many rows have description</span>
+<div class="highlight"><pre><span class="c1"># check how many rows have description</span>
 <span class="kp">table</span><span class="p">(</span>combined<span class="o">$</span>description <span class="o">!=</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+
 
 <h5 id="output_3"><span class="caps">OUTPUT</span></h5>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre>## 
+<div class="highlight"><pre>## 
 ## FALSE  TRUE 
 ##  1521  1138
 </pre></div>
-</td></tr></table>
+
 
 <h2 id="visualizing-the-data">Visualizing the&nbsp;Data</h2>
 <p>Since we want to predict if a listed iPad was sold or not, let us look at a few 
 visualizations of the features vs. the response variable <code>sold</code></p>
 <h5 id="code_6"><span class="caps">CODE</span></h5>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15</pre></div></td><td class="code"><div class="highlight"><pre><span class="c1"># split the combined data-frame into train and test</span>
+<div class="highlight"><pre><span class="c1"># split the combined data-frame into train and test</span>
 train <span class="o">=</span> filter<span class="p">(</span>combined<span class="p">,</span> UniqueID <span class="o">%in%</span> train_ids<span class="p">)</span>
 test <span class="o">=</span> filter<span class="p">(</span>combined<span class="p">,</span> UniqueID <span class="o">%in%</span> test_ids<span class="p">)</span>
 
@@ -741,7 +660,7 @@ train<span class="o">$</span>sold <span class="o">=</span> <span class="kp">fact
 ggMMplot<span class="p">(</span>train<span class="o">$</span>biddable<span class="p">,</span> train<span class="o">$</span>sold<span class="p">,</span> <span class="s">&quot;Biddable&quot;</span><span class="p">,</span> 
                         <span class="s">&quot;Proportion Sold&quot;</span><span class="p">,</span> <span class="s">&quot;Sold&quot;</span><span class="p">,</span> <span class="m">2</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+
 
 <p><img alt="Biddable Vs. Sold" src="../images/viz/ebayipad1-featuresvssold-1.png" /> </p>
 <p>From the plot above, it can be seen that just under 55% of the listings inn our 
@@ -753,30 +672,26 @@ are&nbsp;sold.</p>
 to display the labels properly, we can move the <code>sold</code> to the x-axis 
 and carrier to the&nbsp;y-axis.</p>
 <h5 id="code_7"><span class="caps">CODE</span></h5>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span class="c1"># carrier vs sold</span>
+<div class="highlight"><pre><span class="c1"># carrier vs sold</span>
 ggMMplot<span class="p">(</span>train<span class="o">$</span>sold<span class="p">,</span> train<span class="o">$</span>carrier<span class="p">,</span> <span class="s">&quot;Proportion Sold&quot;</span><span class="p">,</span> 
                         <span class="s">&quot;Proportion of Carriers&quot;</span><span class="p">,</span> <span class="s">&quot;Carriers&quot;</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+
 
 <p><img alt="Carrier Vs. Sold" src="../images/viz/ebayipad1-carriervssold-1.png" /> </p>
 <p>We can create plots similarly for other features against the outcome <code>sold</code>.</p>
 <h5 id="code_8"><span class="caps">CODE</span></h5>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span class="c1"># cellular vs sold</span>
+<div class="highlight"><pre><span class="c1"># cellular vs sold</span>
 ggMMplot<span class="p">(</span>train<span class="o">$</span>sold<span class="p">,</span> train<span class="o">$</span>cellular<span class="p">,</span> <span class="s">&quot;Proportion Sold&quot;</span><span class="p">,</span> <span class="s">&quot;Cellular&quot;</span><span class="p">,</span><span class="s">&quot;Sold&quot;</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+
 
 <p><img alt="Cellular Vs. Sold" src="../images/viz/ebayipad1-features_sold2-1.png" /> </p>
 <h5 id="code_9"><span class="caps">CODE</span></h5>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span class="c1"># color vs sold</span>
+<div class="highlight"><pre><span class="c1"># color vs sold</span>
 ggMMplot<span class="p">(</span>train<span class="o">$</span>sold<span class="p">,</span> train<span class="o">$</span>color<span class="p">,</span> <span class="s">&quot;Proportion Sold&quot;</span><span class="p">,</span> <span class="s">&quot;Color&quot;</span><span class="p">,</span> <span class="s">&quot;Sold&quot;</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
+
 
 <p><img alt="Color Vs. Sold" src="../images/viz/ebayipad1-features_sold2-2.png" /> </p>
 <p>Similar visualizations can be done for other categorical features. We can 
@@ -787,16 +702,7 @@ response variable <code>sold</code>. A histogram for <code>startprice</code> aga
 values in <code>sold</code> would do just fine. But we also need to take care of the fact 
 that this will work only for the fixed price&nbsp;biddings. </p>
 <h5 id="code_10"><span class="caps">CODE</span></h5>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10</pre></div></td><td class="code"><div class="highlight"><pre><span class="c1"># get the fixed price listings </span>
+<div class="highlight"><pre><span class="c1"># get the fixed price listings </span>
 fixedprice.listings <span class="o">=</span> filter<span class="p">(</span>train<span class="p">,</span> biddable <span class="o">==</span> <span class="s">&quot;Fixed&quot;</span><span class="p">)</span>
 
 <span class="c1"># plot a histogram of the prices facetted on value of sold</span>
@@ -807,7 +713,7 @@ pricehist.plt <span class="o">=</span> ggplot<span class="p">(</span>fixedprice.
 
 pricehist.plt
 </pre></div>
-</td></tr></table>
+
 
 <p><img alt="Histogram with Counts" src="../images/viz/ebayipad1-pricehistogram-1.png" /> </p>
 <p>Looking at the histogram above, it looks like the distribution of prices for sold 
@@ -815,14 +721,7 @@ and unsold listings are almost the same &#8230; But since the number of sold and
 listings are unequal, it would be better to have a histogram with densities instead 
 of counts to make comparison&nbsp;easier.</p>
 <h5 id="code_11"><span class="caps">CODE</span></h5>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span class="c1"># plot a histogram of the prices facetted on value of sold</span>
+<div class="highlight"><pre><span class="c1"># plot a histogram of the prices facetted on value of sold</span>
 pricehist_d.plt <span class="o">=</span> ggplot<span class="p">(</span>fixedprice.listings<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> startprice<span class="p">))</span> <span class="o">+</span> 
   geom_histogram<span class="p">(</span>binwidth <span class="o">=</span> <span class="m">100</span><span class="p">,</span> colour <span class="o">=</span> <span class="s">&quot;white&quot;</span><span class="p">,</span> fill <span class="o">=</span> <span class="s">&quot;orange&quot;</span><span class="p">)</span> <span class="o">+</span> 
   xlab<span class="p">(</span><span class="s">&quot;Price (USD)&quot;</span><span class="p">)</span> <span class="o">+</span>
@@ -831,10 +730,10 @@ pricehist_d.plt <span class="o">=</span> ggplot<span class="p">(</span>fixedpric
 
 pricehist_d.plt
 </pre></div>
-</td></tr></table>
+
 
 <p><img alt="Histogram with Density" src="../images/viz/ebayipad1-pricehistogramd-1.png" /> </p>
-<p>As can be seen, we can observe that the ratio of sold iPads is greater for the iPad listings with price between $100 to $200, which we could not observe in the histogram 
+<p>As can be seen, we can observe that the ratio of sold iPads is greater for the iPad listings with price between <span class="caps">USD</span>.100 to <span class="caps">USD</span>.200, which we could not observe in the histogram 
 with&nbsp;counts.</p>
 <p>There are a couple of things we are yet to&nbsp;do:</p>
 <ul>
@@ -927,6 +826,31 @@ discuss a implementation using open-source JavaScript libraries in my next&nbsp;
                         </a>
                     </li>
                     <li class="list-group-item tag-4">
+                        <a href="http://mathusuthan.ml/tag/machine-learning.html">
+                            machine learning
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="http://mathusuthan.ml/tag/python.html">
+                            python
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="http://mathusuthan.ml/tag/r.html">
+                            R
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="http://mathusuthan.ml/tag/articles.html">
+                            articles
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="http://mathusuthan.ml/tag/courseware.html">
+                            courseware
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
                         <a href="http://mathusuthan.ml/tag/data-science.html">
                             data science
                         </a>
@@ -937,33 +861,8 @@ discuss a implementation using open-source JavaScript libraries in my next&nbsp;
                         </a>
                     </li>
                     <li class="list-group-item tag-4">
-                        <a href="http://mathusuthan.ml/tag/python.html">
-                            python
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="http://mathusuthan.ml/tag/articles.html">
-                            articles
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="http://mathusuthan.ml/tag/machine-learning.html">
-                            machine learning
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="http://mathusuthan.ml/tag/r.html">
-                            R
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
                         <a href="http://mathusuthan.ml/tag/visualization.html">
                             visualization
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="http://mathusuthan.ml/tag/courseware.html">
-                            courseware
                         </a>
                     </li>
                 </ul>

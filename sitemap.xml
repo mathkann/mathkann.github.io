@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://mathusuthan.ml/</loc>
-<lastmod>2015-07-17T22:31:21-00:00</lastmod>
+<lastmod>2015-07-17T22:57:21-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://mathusuthan.ml/archives.html</loc>
-<lastmod>2015-07-17T22:31:21-00:00</lastmod>
+<lastmod>2015-07-17T22:57:21-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://mathusuthan.ml/tags.html</loc>
-<lastmod>2015-07-17T22:31:21-00:00</lastmod>
+<lastmod>2015-07-17T22:57:21-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://mathusuthan.ml/categories.html</loc>
-<lastmod>2015-07-17T22:31:21-00:00</lastmod>
+<lastmod>2015-07-17T22:57:21-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -74,20 +74,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://mathusuthan.ml/tag/data-science.html</loc>
-<lastmod>2015-07-16T07:30:00+00:09</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://mathusuthan.ml/tag/courseware.html</loc>
-<lastmod>2015-07-12T10:20:00+00:09</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>http://mathusuthan.ml/tag/articles.html</loc>
 <lastmod>2015-07-12T10:20:00+00:09</lastmod>
 <changefreq>daily</changefreq>
@@ -95,22 +81,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://mathusuthan.ml/tag/kaggle.html</loc>
-<lastmod>2015-07-16T07:30:00+00:09</lastmod>
+<loc>http://mathusuthan.ml/tag/python.html</loc>
+<lastmod>2015-07-10T10:20:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://mathusuthan.ml/tag/visualization.html</loc>
+<loc>http://mathusuthan.ml/tag/data-science.html</loc>
 <lastmod>2015-07-16T07:30:00+00:09</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://mathusuthan.ml/tag/machine-learning.html</loc>
-<lastmod>2015-07-12T10:20:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -130,8 +109,29 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://mathusuthan.ml/tag/python.html</loc>
-<lastmod>2015-07-10T10:20:00+00:09</lastmod>
+<loc>http://mathusuthan.ml/tag/visualization.html</loc>
+<lastmod>2015-07-16T07:30:00+00:09</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://mathusuthan.ml/tag/courseware.html</loc>
+<lastmod>2015-07-12T10:20:00+00:09</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://mathusuthan.ml/tag/machine-learning.html</loc>
+<lastmod>2015-07-12T10:20:00+00:09</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://mathusuthan.ml/tag/kaggle.html</loc>
+<lastmod>2015-07-16T07:30:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

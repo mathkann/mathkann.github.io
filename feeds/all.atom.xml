@@ -3,16 +3,7 @@
 &lt;p&gt;This post does a initial data exploration of the data provided. The analysis is done using the R language. Further posts performing more analysis of the data and a predictive model will&amp;nbsp;follow.&lt;/p&gt;
 &lt;h2 id="let-us-begin"&gt;Let us&amp;nbsp;begin&lt;/h2&gt;
 &lt;h5 id="code"&gt;&lt;span class="caps"&gt;CODE&lt;/span&gt;&lt;/h5&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# loading the required libraries&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# loading the required libraries&lt;/span&gt;
 &lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;ggplot2&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;dplyr&lt;span class="p"&gt;)&lt;/span&gt;
 
@@ -23,23 +14,10 @@ test &lt;span class="o"&gt;=&lt;/span&gt; read.csv&lt;span class="p"&gt;(&lt;/sp
 &lt;span class="c1"&gt;# quick view of the structure of the data ...train &lt;/span&gt;
 str&lt;span class="p"&gt;(&lt;/span&gt;train&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
 
 &lt;h5 id="output"&gt;&lt;span class="caps"&gt;OUTPUT&lt;/span&gt;&lt;/h5&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;## &amp;#39;data.frame&amp;#39;:    1861 obs. of  11 variables:
+&lt;div class="highlight"&gt;&lt;pre&gt;## &amp;#39;data.frame&amp;#39;:    1861 obs. of  11 variables:
 ##  $ description: chr  &amp;quot;iPad is in 8.5+ out of 10 cosmetic condition!&amp;quot; &amp;quot;Previously used, 
     please read description. May show signs of use such as scratches to the screen and 
     &amp;quot; &amp;quot;&amp;quot; &amp;quot;&amp;quot; ...
@@ -54,29 +32,16 @@ str&lt;span class="p"&gt;(&lt;/span&gt;train&lt;span class="p"&gt;)&lt;/span&gt;
 ##  $ sold       : int  0 1 1 0 0 1 1 0 1 1 ...
 ##  $ UniqueID   : int  10001 10002 10003 10004 10005 10006 10007 10008 10009 10010 ...
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
 
 &lt;h5 id="code_1"&gt;&lt;span class="caps"&gt;CODE&lt;/span&gt;&lt;/h5&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# quick view of the structure of the test data                                                      &lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# quick view of the structure of the test data                                                      &lt;/span&gt;
 str&lt;span class="p"&gt;(&lt;/span&gt;test&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
 
 &lt;h5 id="output_1"&gt;&lt;span class="caps"&gt;OUTPUT&lt;/span&gt;&lt;/h5&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;## &amp;#39;data.frame&amp;#39;:    798 obs. of  10 variables:
+&lt;div class="highlight"&gt;&lt;pre&gt;## &amp;#39;data.frame&amp;#39;:    798 obs. of  10 variables:
 ##  $ description: chr  &amp;quot;like new&amp;quot; &amp;quot;Item is in great shape. I upgraded to the iPad Air 2 
    and don&amp;amp;#039;t need the mini any longer, even though &amp;quot; &amp;quot;This iPad is working and is 
    tested 100%. It runs great. It     is in good condition. Cracked digitizer.&amp;quot; &amp;quot;&amp;quot; ...
@@ -90,16 +55,14 @@ str&lt;span class="p"&gt;(&lt;/span&gt;test&lt;span class="p"&gt;)&lt;/span&gt;
 ##  $ productline: chr  &amp;quot;iPad 1&amp;quot; &amp;quot;iPad mini 2&amp;quot; &amp;quot;iPad 3&amp;quot; &amp;quot;iPad mini&amp;quot; ...
 ##  $ UniqueID   : int  11862 11863 11864 11865 11866 11867 11868 11869 11870 11871 ...
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
 
 &lt;h5 id="code_2"&gt;&lt;span class="caps"&gt;CODE&lt;/span&gt;&lt;/h5&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2
-3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# create a list to hold the columns that are categorical&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# create a list to hold the columns that are categorical&lt;/span&gt;
 categoric_vars &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;biddable&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;condition&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;cellular&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;carrier&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;color&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
                    &lt;span class="s"&gt;&amp;quot;storage&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;productline&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;sold&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
 
 &lt;h2 id="prepping-the-data"&gt;Prepping the&amp;nbsp;Data&lt;/h2&gt;
 &lt;p&gt;As can be seen, we have two datasets, &lt;code&gt;train&lt;/code&gt; and &lt;code&gt;test&lt;/code&gt; which are similar 
@@ -144,15 +107,7 @@ listed as &amp;#8220;None&amp;#8221; if&amp;nbsp;cellular=0.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;Let us combine the two datasets and then covert the categorical columns to&amp;nbsp;factors. &lt;/p&gt;
 &lt;h5 id="code_3"&gt;&lt;span class="caps"&gt;CODE&lt;/span&gt;&lt;/h5&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2
-3
-4
-5
-6
-7
-8
-9&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# Create sold  column in test before we can merge into train&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# Create sold  column in test before we can merge into train&lt;/span&gt;
 test&lt;span class="o"&gt;$&lt;/span&gt;sold &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;   &lt;span class="c1"&gt;# column to be predicted&lt;/span&gt;
 
 &lt;span class="c1"&gt;# hold on to the ids so we can easily seperate train / test rows later&lt;/span&gt;
@@ -162,41 +117,22 @@ train_ids &lt;span class="o"&gt;=&lt;/span&gt; train&lt;span class="o"&gt;$&lt;/
 &lt;span class="c1"&gt;# Combine train and test&lt;/span&gt;
 combined &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;rbind&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;train&lt;span class="p"&gt;,&lt;/span&gt; test&lt;span class="p"&gt;)&lt;/span&gt;                                 
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
 
 &lt;p&gt;The combined data-frame has 2659 rows. Now let us convert the 
 categorical variables which are currently of numeric and character data types
 in the R data-frames into&amp;nbsp;factors.&lt;/p&gt;
 &lt;h5 id="code_4"&gt;&lt;span class="caps"&gt;CODE&lt;/span&gt;&lt;/h5&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2
-3
-4
-5&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# Use lapply to covert the columns in the categoric_vars list to factor&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# Use lapply to covert the columns in the categoric_vars list to factor&lt;/span&gt;
 combined&lt;span class="p"&gt;[,&lt;/span&gt; categoric_vars&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;lapply&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;combined&lt;span class="p"&gt;[,&lt;/span&gt; categoric_vars&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="kp"&gt;as.factor&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="c1"&gt;# view a summary of the categorical variables&lt;/span&gt;
 &lt;span class="kp"&gt;summary&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;combined&lt;span class="p"&gt;[,&lt;/span&gt; categoric_vars&lt;span class="p"&gt;])&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
 
 &lt;h5 id="output_2"&gt;&lt;span class="caps"&gt;OUTPUT&lt;/span&gt;&lt;/h5&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;##  biddable                    condition       cellular        carrier    
+&lt;div class="highlight"&gt;&lt;pre&gt;##  biddable                    condition       cellular        carrier    
 ##  0:1446   For parts or not working: 264   0      :1595   AT&amp;amp;T    : 292  
 ##  1:1213   Manufacturer refurbished:  55   1      : 723   None    :1599  
 ##           New                     : 402   Unknown: 341   Other   :   6  
@@ -213,43 +149,26 @@ combined&lt;span class="p"&gt;[,&lt;/span&gt; categoric_vars&lt;span class="p"&g
 ##                                   iPad Air 2:233           
 ##                                   (Other)   :733
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
 
 &lt;h5 id="code_5"&gt;&lt;span class="caps"&gt;CODE&lt;/span&gt;&lt;/h5&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# check how many rows have description&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# check how many rows have description&lt;/span&gt;
 &lt;span class="kp"&gt;table&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;combined&lt;span class="o"&gt;$&lt;/span&gt;description &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
 
 &lt;h5 id="output_3"&gt;&lt;span class="caps"&gt;OUTPUT&lt;/span&gt;&lt;/h5&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2
-3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;## 
+&lt;div class="highlight"&gt;&lt;pre&gt;## 
 ## FALSE  TRUE 
 ##  1521  1138
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
 
 &lt;h2 id="visualizing-the-data"&gt;Visualizing the&amp;nbsp;Data&lt;/h2&gt;
 &lt;p&gt;Since we want to predict if a listed iPad was sold or not, let us look at a few 
 visualizations of the features vs. the response variable &lt;code&gt;sold&lt;/code&gt;&lt;/p&gt;
 &lt;h5 id="code_6"&gt;&lt;span class="caps"&gt;CODE&lt;/span&gt;&lt;/h5&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# split the combined data-frame into train and test&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# split the combined data-frame into train and test&lt;/span&gt;
 train &lt;span class="o"&gt;=&lt;/span&gt; filter&lt;span class="p"&gt;(&lt;/span&gt;combined&lt;span class="p"&gt;,&lt;/span&gt; UniqueID &lt;span class="o"&gt;%in%&lt;/span&gt; train_ids&lt;span class="p"&gt;)&lt;/span&gt;
 test &lt;span class="o"&gt;=&lt;/span&gt; filter&lt;span class="p"&gt;(&lt;/span&gt;combined&lt;span class="p"&gt;,&lt;/span&gt; UniqueID &lt;span class="o"&gt;%in%&lt;/span&gt; test_ids&lt;span class="p"&gt;)&lt;/span&gt;
 
@@ -265,7 +184,7 @@ train&lt;span class="o"&gt;$&lt;/span&gt;sold &lt;span class="o"&gt;=&lt;/span&g
 ggMMplot&lt;span class="p"&gt;(&lt;/span&gt;train&lt;span class="o"&gt;$&lt;/span&gt;biddable&lt;span class="p"&gt;,&lt;/span&gt; train&lt;span class="o"&gt;$&lt;/span&gt;sold&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Biddable&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
                         &lt;span class="s"&gt;&amp;quot;Proportion Sold&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Sold&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
 
 &lt;p&gt;&lt;img alt="Biddable Vs. Sold" src="../images/viz/ebayipad1-featuresvssold-1.png" /&gt; &lt;/p&gt;
 &lt;p&gt;From the plot above, it can be seen that just under 55% of the listings inn our 
@@ -277,30 +196,26 @@ are&amp;nbsp;sold.&lt;/p&gt;
 to display the labels properly, we can move the &lt;code&gt;sold&lt;/code&gt; to the x-axis 
 and carrier to the&amp;nbsp;y-axis.&lt;/p&gt;
 &lt;h5 id="code_7"&gt;&lt;span class="caps"&gt;CODE&lt;/span&gt;&lt;/h5&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2
-3&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# carrier vs sold&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# carrier vs sold&lt;/span&gt;
 ggMMplot&lt;span class="p"&gt;(&lt;/span&gt;train&lt;span class="o"&gt;$&lt;/span&gt;sold&lt;span class="p"&gt;,&lt;/span&gt; train&lt;span class="o"&gt;$&lt;/span&gt;carrier&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Proportion Sold&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
                         &lt;span class="s"&gt;&amp;quot;Proportion of Carriers&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Carriers&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
 
 &lt;p&gt;&lt;img alt="Carrier Vs. Sold" src="../images/viz/ebayipad1-carriervssold-1.png" /&gt; &lt;/p&gt;
 &lt;p&gt;We can create plots similarly for other features against the outcome &lt;code&gt;sold&lt;/code&gt;.&lt;/p&gt;
 &lt;h5 id="code_8"&gt;&lt;span class="caps"&gt;CODE&lt;/span&gt;&lt;/h5&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# cellular vs sold&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# cellular vs sold&lt;/span&gt;
 ggMMplot&lt;span class="p"&gt;(&lt;/span&gt;train&lt;span class="o"&gt;$&lt;/span&gt;sold&lt;span class="p"&gt;,&lt;/span&gt; train&lt;span class="o"&gt;$&lt;/span&gt;cellular&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Proportion Sold&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Cellular&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Sold&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
 
 &lt;p&gt;&lt;img alt="Cellular Vs. Sold" src="../images/viz/ebayipad1-features_sold2-1.png" /&gt; &lt;/p&gt;
 &lt;h5 id="code_9"&gt;&lt;span class="caps"&gt;CODE&lt;/span&gt;&lt;/h5&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# color vs sold&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# color vs sold&lt;/span&gt;
 ggMMplot&lt;span class="p"&gt;(&lt;/span&gt;train&lt;span class="o"&gt;$&lt;/span&gt;sold&lt;span class="p"&gt;,&lt;/span&gt; train&lt;span class="o"&gt;$&lt;/span&gt;color&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Proportion Sold&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Color&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Sold&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
 
 &lt;p&gt;&lt;img alt="Color Vs. Sold" src="../images/viz/ebayipad1-features_sold2-2.png" /&gt; &lt;/p&gt;
 &lt;p&gt;Similar visualizations can be done for other categorical features. We can 
@@ -311,16 +226,7 @@ response variable &lt;code&gt;sold&lt;/code&gt;. A histogram for &lt;code&gt;sta
 values in &lt;code&gt;sold&lt;/code&gt; would do just fine. But we also need to take care of the fact 
 that this will work only for the fixed price&amp;nbsp;biddings. &lt;/p&gt;
 &lt;h5 id="code_10"&gt;&lt;span class="caps"&gt;CODE&lt;/span&gt;&lt;/h5&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# get the fixed price listings &lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# get the fixed price listings &lt;/span&gt;
 fixedprice.listings &lt;span class="o"&gt;=&lt;/span&gt; filter&lt;span class="p"&gt;(&lt;/span&gt;train&lt;span class="p"&gt;,&lt;/span&gt; biddable &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Fixed&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="c1"&gt;# plot a histogram of the prices facetted on value of sold&lt;/span&gt;
@@ -331,7 +237,7 @@ pricehist.plt &lt;span class="o"&gt;=&lt;/span&gt; ggplot&lt;span class="p"&gt;(
 
 pricehist.plt
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
 
 &lt;p&gt;&lt;img alt="Histogram with Counts" src="../images/viz/ebayipad1-pricehistogram-1.png" /&gt; &lt;/p&gt;
 &lt;p&gt;Looking at the histogram above, it looks like the distribution of prices for sold 
@@ -339,14 +245,7 @@ and unsold listings are almost the same &amp;#8230; But since the number of sold
 listings are unequal, it would be better to have a histogram with densities instead 
 of counts to make comparison&amp;nbsp;easier.&lt;/p&gt;
 &lt;h5 id="code_11"&gt;&lt;span class="caps"&gt;CODE&lt;/span&gt;&lt;/h5&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2
-3
-4
-5
-6
-7
-8&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# plot a histogram of the prices facetted on value of sold&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# plot a histogram of the prices facetted on value of sold&lt;/span&gt;
 pricehist_d.plt &lt;span class="o"&gt;=&lt;/span&gt; ggplot&lt;span class="p"&gt;(&lt;/span&gt;fixedprice.listings&lt;span class="p"&gt;,&lt;/span&gt; aes&lt;span class="p"&gt;(&lt;/span&gt;x &lt;span class="o"&gt;=&lt;/span&gt; startprice&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; 
   geom_histogram&lt;span class="p"&gt;(&lt;/span&gt;binwidth &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; colour &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;white&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; fill &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;orange&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; 
   xlab&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Price (USD)&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
@@ -355,10 +254,10 @@ pricehist_d.plt &lt;span class="o"&gt;=&lt;/span&gt; ggplot&lt;span class="p"&gt
 
 pricehist_d.plt
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
 
 &lt;p&gt;&lt;img alt="Histogram with Density" src="../images/viz/ebayipad1-pricehistogramd-1.png" /&gt; &lt;/p&gt;
-&lt;p&gt;As can be seen, we can observe that the ratio of sold iPads is greater for the iPad listings with price between $100 to $200, which we could not observe in the histogram 
+&lt;p&gt;As can be seen, we can observe that the ratio of sold iPads is greater for the iPad listings with price between &lt;span class="caps"&gt;USD&lt;/span&gt;.100 to &lt;span class="caps"&gt;USD&lt;/span&gt;.200, which we could not observe in the histogram 
 with&amp;nbsp;counts.&lt;/p&gt;
 &lt;p&gt;There are a couple of things we are yet to&amp;nbsp;do:&lt;/p&gt;
 &lt;ul&gt;
