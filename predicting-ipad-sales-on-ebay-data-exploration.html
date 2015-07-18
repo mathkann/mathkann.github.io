@@ -475,7 +475,7 @@ Data Sense            </a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p>As part of the latest run of the <a href="https://courses.edx.org/courses/course-v1:MITx+15.071x_2a+2T2015/info">The Analytics Edge</a> <span class="caps">MOOC</span> on edX, a <a href="https://inclass.kaggle.com/c/15-071x-the-analytics-edge-summer-2015">modelling competition</a> was launched on Kaggle. The objective of the competition is to predict what makes an eBay listing successful? The challenge is to develop an analytics model that will help buyers and sellers predict the sales success of a set of eBay listings for Apple iPads from spring&nbsp;2015.</p>
+                <p>As part of the latest run of the <a href="https://courses.edx.org/courses/course-v1:MITx+15.071x_2a+2T2015/info">The Analytics Edge</a> <span class="caps">MOOC</span> on edX, a <a href="https://inclass.kaggle.com/c/15-071x-the-analytics-edge-summer-2015">modelling competition</a> was launched on Kaggle. The objective of the competition is to predict what makes an eBay listing successful? The challenge is to develop an analytics model that will help buyers and sellers predict the sales success of a set of eBay listings for Apple iPads from Spring&nbsp;2015.</p>
 <p>This post does a initial data exploration of the data provided. The analysis is done using the R language. Further posts performing more analysis of the data and a predictive model will&nbsp;follow.</p>
 <h2 id="let-us-begin">Let us&nbsp;begin</h2>
 <h5 id="code">Code</h5>
@@ -511,7 +511,7 @@ str<span class="p">(</span>train<span class="p">)</span>
 
 
 <h5 id="code_1">Code</h5>
-<div class="highlight"><pre><span class="c1"># quick view of the structure of the test data                                                      </span>
+<div class="highlight"><pre><span class="c1"># quick view of the structure of the test data                                           </span>
 str<span class="p">(</span>test<span class="p">)</span>
 </pre></div>
 
@@ -541,7 +541,7 @@ categoric_vars <span class="o">=</span> <span class="kt">c</span><span class="p"
 
 
 <h2 id="prepping-the-data">Prepping the&nbsp;Data</h2>
-<p>As can be seen, we have two datasets, <code>train</code> and <code>test</code> which are similar 
+<p>As can be seen, we have two data sets, <code>train</code> and <code>test</code> which are similar 
 except for the <code>sold</code> column which is what we need to predict for <code>test</code>. The
 other data columns are defined in the Data Dictionary&nbsp;below:</p>
 <h3 id="data-dictionary-for-train-test">Data Dictionary for train /&nbsp;test</h3>
@@ -581,7 +581,7 @@ listed as &#8220;None&#8221; if&nbsp;cellular=0.</p>
 <p><strong>sold</strong> = equal to 1 if it did, and 0 if it did&nbsp;not</p>
 </li>
 </ul>
-<p>Let us combine the two datasets and then covert the categorical columns to&nbsp;factors. </p>
+<p>Let us combine the two data sets and then covert the categorical columns to&nbsp;factors. </p>
 <h5 id="code_3">Code</h5>
 <div class="highlight"><pre><span class="c1"># Create sold  column in test before we can merge into train</span>
 test<span class="o">$</span>sold <span class="o">=</span> <span class="m">0</span>   <span class="c1"># column to be predicted</span>
@@ -641,7 +641,7 @@ combined<span class="p">[,</span> categoric_vars<span class="p">]</span> <span c
 
 
 <h2 id="visualizing-the-data">Visualizing the&nbsp;Data</h2>
-<p>Since we want to predict if a listed iPad was sold or not, let us look at a few 
+<p>Since the task is to predict if a listed iPad was sold or not,the first step would be to look at a few 
 visualizations of the features vs. the response variable <code>sold</code></p>
 <h5 id="code_6">Code</h5>
 <div class="highlight"><pre><span class="c1"># split the combined data-frame into train and test</span>
@@ -663,13 +663,13 @@ ggMMplot<span class="p">(</span>train<span class="o">$</span>biddable<span class
 
 
 <p><img alt="Biddable Vs. Sold" src="../images/viz/ebayipad1-featuresvssold-1.png" /> </p>
-<p>From the plot above, it can be seen that just under 55% of the listings inn our 
+<p>From the plot above, it can be seen that just under 55% of the listings in the 
 training data have been assigned a fixed prize.And among them almost 76 % of the 
 iPads that have been assigned a fixed prize have not been sold yet. And the 
 opposite is true when iPads are listed under Auctions. Almost 75% of them 
 are&nbsp;sold.</p>
-<p>Let us do one for <code>carriers</code> vs. <code>sold</code>. Since  we have more than three carriers 
-to display the labels properly, we can move the <code>sold</code> to the x-axis 
+<p>Let us do one for <code>carriers</code> vs. <code>sold</code>. Since  there are more than three carriers 
+to display the labels properly, <code>sold</code> can be moved to the x-axis 
 and carrier to the&nbsp;y-axis.</p>
 <h5 id="code_7">Code</h5>
 <div class="highlight"><pre><span class="c1"># carrier vs sold</span>
@@ -695,10 +695,10 @@ ggMMplot<span class="p">(</span>train<span class="o">$</span>sold<span class="p"
 
 <p><img alt="Color Vs. Sold" src="../images/viz/ebayipad1-features_sold2-2.png" /> </p>
 <p>Similar visualizations can be done for other categorical&nbsp;features. </p>
-<p>Let us now try to visualize the only numerical feature <code>startprice</code> against the 
+<p>Moving on, let us trt to visualize the numerical feature <code>startprice</code> against the 
 response variable <code>sold</code>. A histogram for <code>startprice</code> against the two different 
-values in <code>sold</code> would do just fine. But we also need to take care of the fact 
-that this will work only for the fixed price&nbsp;biddings. </p>
+values in <code>sold</code> would do just fine. But care has to be taken of the fact 
+that this will work only for the fixed price&nbsp;bids. </p>
 <h5 id="code_10">Code</h5>
 <div class="highlight"><pre><span class="c1"># get the fixed price listings </span>
 fixedprice.listings <span class="o">=</span> filter<span class="p">(</span>train<span class="p">,</span> biddable <span class="o">==</span> <span class="s">&quot;Fixed&quot;</span><span class="p">)</span>
@@ -731,22 +731,76 @@ pricehist_d.plt
 
 
 <p><img alt="Histogram with Density" src="../images/viz/ebayipad1-pricehistogramd-1.png" /> </p>
-<p>As can be seen, we can observe that the ratio of sold iPads is greater for the iPad listings with price between <span class="caps">USD</span>.100 to <span class="caps">USD</span>.200, which we could not observe in the histogram 
+<p>As can be observed, the ratio of sold iPads is greater for the iPad listings with low prices (between \<span class="math">\( 0 to \\)</span> 200), which was not very clear in the histogram 
 with&nbsp;counts.</p>
-<p>There are a couple of things we are yet to&nbsp;do:</p>
+<p>There are a couple of things yet to be&nbsp;done:</p>
 <ul>
 <li>
-<p>analyse the <code>description</code> column. This involves doing text analytics and 
+<p>analyze the <code>description</code> column. This involves doing text analytics and 
 will be done in a later&nbsp;post.</p>
 </li>
 <li>
-<p>analyse the interaction between the features and their effect on the success of 
+<p>analyze the interaction between the features and their effect on the success of 
 the listing. This is best done using an interactive visualization. One can easily 
 do this via a tool like Tableau or use a JavaScript framework like D3.js which 
 has an added advantage of being free and presentable easily in a website. I will 
 discuss a implementation using open-source JavaScript libraries in my next&nbsp;post.</p>
 </li>
 </ul>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
             </div>
             <!-- /.entry-content -->
     <hr/>
@@ -824,6 +878,16 @@ discuss a implementation using open-source JavaScript libraries in my next&nbsp;
                         </a>
                     </li>
                     <li class="list-group-item tag-4">
+                        <a href="http://mathusuthan.ml/tag/data-science.html">
+                            data science
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="http://mathusuthan.ml/tag/machine-learning.html">
+                            machine learning
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
                         <a href="http://mathusuthan.ml/tag/visualization.html">
                             visualization
                         </a>
@@ -834,18 +898,8 @@ discuss a implementation using open-source JavaScript libraries in my next&nbsp;
                         </a>
                     </li>
                     <li class="list-group-item tag-4">
-                        <a href="http://mathusuthan.ml/tag/python.html">
-                            python
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="http://mathusuthan.ml/tag/machine-learning.html">
-                            machine learning
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="http://mathusuthan.ml/tag/data-science.html">
-                            data science
+                        <a href="http://mathusuthan.ml/tag/articles.html">
+                            articles
                         </a>
                     </li>
                     <li class="list-group-item tag-4">
@@ -854,8 +908,8 @@ discuss a implementation using open-source JavaScript libraries in my next&nbsp;
                         </a>
                     </li>
                     <li class="list-group-item tag-4">
-                        <a href="http://mathusuthan.ml/tag/articles.html">
-                            articles
+                        <a href="http://mathusuthan.ml/tag/python.html">
+                            python
                         </a>
                     </li>
                     <li class="list-group-item tag-4">

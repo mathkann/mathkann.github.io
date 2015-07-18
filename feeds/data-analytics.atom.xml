@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Data Sense</title><link href="http://mathusuthan.ml/" rel="alternate"></link><link href="http://mathusuthan.ml/feeds/data-analytics.atom.xml" rel="self"></link><id>http://mathusuthan.ml/</id><updated>2015-07-16T07:30:00+02:00</updated><entry><title>Predicting iPad Sales on eBay - Data Exploration</title><link href="http://mathusuthan.ml/predicting-ipad-sales-on-ebay-data-exploration.html" rel="alternate"></link><updated>2015-07-16T07:30:00+02:00</updated><author><name>Mathusuthan N Kannan</name></author><id>tag:mathusuthan.ml,2015-07-16:predicting-ipad-sales-on-ebay-data-exploration.html</id><summary type="html">&lt;p&gt;As part of the latest run of the &lt;a href="https://courses.edx.org/courses/course-v1:MITx+15.071x_2a+2T2015/info"&gt;The Analytics Edge&lt;/a&gt; &lt;span class="caps"&gt;MOOC&lt;/span&gt; on edX, a &lt;a href="https://inclass.kaggle.com/c/15-071x-the-analytics-edge-summer-2015"&gt;modelling competition&lt;/a&gt; was launched on Kaggle. The objective of the competition is to predict what makes an eBay listing successful? The challenge is to develop an analytics model that will help buyers and sellers predict the sales success of a set of eBay listings for Apple iPads from spring&amp;nbsp;2015.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Data Sense</title><link href="http://mathusuthan.ml/" rel="alternate"></link><link href="http://mathusuthan.ml/feeds/data-analytics.atom.xml" rel="self"></link><id>http://mathusuthan.ml/</id><updated>2015-07-16T07:30:00+02:00</updated><entry><title>Predicting iPad Sales on eBay - Data Exploration</title><link href="http://mathusuthan.ml/predicting-ipad-sales-on-ebay-data-exploration.html" rel="alternate"></link><updated>2015-07-16T07:30:00+02:00</updated><author><name>Mathusuthan N Kannan</name></author><id>tag:mathusuthan.ml,2015-07-16:predicting-ipad-sales-on-ebay-data-exploration.html</id><summary type="html">&lt;p&gt;As part of the latest run of the &lt;a href="https://courses.edx.org/courses/course-v1:MITx+15.071x_2a+2T2015/info"&gt;The Analytics Edge&lt;/a&gt; &lt;span class="caps"&gt;MOOC&lt;/span&gt; on edX, a &lt;a href="https://inclass.kaggle.com/c/15-071x-the-analytics-edge-summer-2015"&gt;modelling competition&lt;/a&gt; was launched on Kaggle. The objective of the competition is to predict what makes an eBay listing successful? The challenge is to develop an analytics model that will help buyers and sellers predict the sales success of a set of eBay listings for Apple iPads from Spring&amp;nbsp;2015.&lt;/p&gt;
 &lt;p&gt;This post does a initial data exploration of the data provided. The analysis is done using the R language. Further posts performing more analysis of the data and a predictive model will&amp;nbsp;follow.&lt;/p&gt;
 &lt;h2 id="let-us-begin"&gt;Let us&amp;nbsp;begin&lt;/h2&gt;
 &lt;h5 id="code"&gt;Code&lt;/h5&gt;
@@ -35,7 +35,7 @@ str&lt;span class="p"&gt;(&lt;/span&gt;train&lt;span class="p"&gt;)&lt;/span&gt;
 
 
 &lt;h5 id="code_1"&gt;Code&lt;/h5&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# quick view of the structure of the test data                                                      &lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# quick view of the structure of the test data                                           &lt;/span&gt;
 str&lt;span class="p"&gt;(&lt;/span&gt;test&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -65,7 +65,7 @@ categoric_vars &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;
 
 
 &lt;h2 id="prepping-the-data"&gt;Prepping the&amp;nbsp;Data&lt;/h2&gt;
-&lt;p&gt;As can be seen, we have two datasets, &lt;code&gt;train&lt;/code&gt; and &lt;code&gt;test&lt;/code&gt; which are similar 
+&lt;p&gt;As can be seen, we have two data sets, &lt;code&gt;train&lt;/code&gt; and &lt;code&gt;test&lt;/code&gt; which are similar 
 except for the &lt;code&gt;sold&lt;/code&gt; column which is what we need to predict for &lt;code&gt;test&lt;/code&gt;. The
 other data columns are defined in the Data Dictionary&amp;nbsp;below:&lt;/p&gt;
 &lt;h3 id="data-dictionary-for-train-test"&gt;Data Dictionary for train /&amp;nbsp;test&lt;/h3&gt;
@@ -105,7 +105,7 @@ listed as &amp;#8220;None&amp;#8221; if&amp;nbsp;cellular=0.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;sold&lt;/strong&gt; = equal to 1 if it did, and 0 if it did&amp;nbsp;not&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Let us combine the two datasets and then covert the categorical columns to&amp;nbsp;factors. &lt;/p&gt;
+&lt;p&gt;Let us combine the two data sets and then covert the categorical columns to&amp;nbsp;factors. &lt;/p&gt;
 &lt;h5 id="code_3"&gt;Code&lt;/h5&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# Create sold  column in test before we can merge into train&lt;/span&gt;
 test&lt;span class="o"&gt;$&lt;/span&gt;sold &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;   &lt;span class="c1"&gt;# column to be predicted&lt;/span&gt;
@@ -165,7 +165,7 @@ combined&lt;span class="p"&gt;[,&lt;/span&gt; categoric_vars&lt;span class="p"&g
 
 
 &lt;h2 id="visualizing-the-data"&gt;Visualizing the&amp;nbsp;Data&lt;/h2&gt;
-&lt;p&gt;Since we want to predict if a listed iPad was sold or not, let us look at a few 
+&lt;p&gt;Since the task is to predict if a listed iPad was sold or not,the first step would be to look at a few 
 visualizations of the features vs. the response variable &lt;code&gt;sold&lt;/code&gt;&lt;/p&gt;
 &lt;h5 id="code_6"&gt;Code&lt;/h5&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# split the combined data-frame into train and test&lt;/span&gt;
@@ -187,13 +187,13 @@ ggMMplot&lt;span class="p"&gt;(&lt;/span&gt;train&lt;span class="o"&gt;$&lt;/spa
 
 
 &lt;p&gt;&lt;img alt="Biddable Vs. Sold" src="../images/viz/ebayipad1-featuresvssold-1.png" /&gt; &lt;/p&gt;
-&lt;p&gt;From the plot above, it can be seen that just under 55% of the listings inn our 
+&lt;p&gt;From the plot above, it can be seen that just under 55% of the listings in the 
 training data have been assigned a fixed prize.And among them almost 76 % of the 
 iPads that have been assigned a fixed prize have not been sold yet. And the 
 opposite is true when iPads are listed under Auctions. Almost 75% of them 
 are&amp;nbsp;sold.&lt;/p&gt;
-&lt;p&gt;Let us do one for &lt;code&gt;carriers&lt;/code&gt; vs. &lt;code&gt;sold&lt;/code&gt;. Since  we have more than three carriers 
-to display the labels properly, we can move the &lt;code&gt;sold&lt;/code&gt; to the x-axis 
+&lt;p&gt;Let us do one for &lt;code&gt;carriers&lt;/code&gt; vs. &lt;code&gt;sold&lt;/code&gt;. Since  there are more than three carriers 
+to display the labels properly, &lt;code&gt;sold&lt;/code&gt; can be moved to the x-axis 
 and carrier to the&amp;nbsp;y-axis.&lt;/p&gt;
 &lt;h5 id="code_7"&gt;Code&lt;/h5&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# carrier vs sold&lt;/span&gt;
@@ -219,10 +219,10 @@ ggMMplot&lt;span class="p"&gt;(&lt;/span&gt;train&lt;span class="o"&gt;$&lt;/spa
 
 &lt;p&gt;&lt;img alt="Color Vs. Sold" src="../images/viz/ebayipad1-features_sold2-2.png" /&gt; &lt;/p&gt;
 &lt;p&gt;Similar visualizations can be done for other categorical&amp;nbsp;features. &lt;/p&gt;
-&lt;p&gt;Let us now try to visualize the only numerical feature &lt;code&gt;startprice&lt;/code&gt; against the 
+&lt;p&gt;Moving on, let us trt to visualize the numerical feature &lt;code&gt;startprice&lt;/code&gt; against the 
 response variable &lt;code&gt;sold&lt;/code&gt;. A histogram for &lt;code&gt;startprice&lt;/code&gt; against the two different 
-values in &lt;code&gt;sold&lt;/code&gt; would do just fine. But we also need to take care of the fact 
-that this will work only for the fixed price&amp;nbsp;biddings. &lt;/p&gt;
+values in &lt;code&gt;sold&lt;/code&gt; would do just fine. But care has to be taken of the fact 
+that this will work only for the fixed price&amp;nbsp;bids. &lt;/p&gt;
 &lt;h5 id="code_10"&gt;Code&lt;/h5&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# get the fixed price listings &lt;/span&gt;
 fixedprice.listings &lt;span class="o"&gt;=&lt;/span&gt; filter&lt;span class="p"&gt;(&lt;/span&gt;train&lt;span class="p"&gt;,&lt;/span&gt; biddable &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Fixed&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -255,19 +255,73 @@ pricehist_d.plt
 
 
 &lt;p&gt;&lt;img alt="Histogram with Density" src="../images/viz/ebayipad1-pricehistogramd-1.png" /&gt; &lt;/p&gt;
-&lt;p&gt;As can be seen, we can observe that the ratio of sold iPads is greater for the iPad listings with price between &lt;span class="caps"&gt;USD&lt;/span&gt;.100 to &lt;span class="caps"&gt;USD&lt;/span&gt;.200, which we could not observe in the histogram 
+&lt;p&gt;As can be observed, the ratio of sold iPads is greater for the iPad listings with low prices (between \&lt;span class="math"&gt;\( 0 to \\)&lt;/span&gt; 200), which was not very clear in the histogram 
 with&amp;nbsp;counts.&lt;/p&gt;
-&lt;p&gt;There are a couple of things we are yet to&amp;nbsp;do:&lt;/p&gt;
+&lt;p&gt;There are a couple of things yet to be&amp;nbsp;done:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;analyse the &lt;code&gt;description&lt;/code&gt; column. This involves doing text analytics and 
+&lt;p&gt;analyze the &lt;code&gt;description&lt;/code&gt; column. This involves doing text analytics and 
 will be done in a later&amp;nbsp;post.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;analyse the interaction between the features and their effect on the success of 
+&lt;p&gt;analyze the interaction between the features and their effect on the success of 
 the listing. This is best done using an interactive visualization. One can easily 
 do this via a tool like Tableau or use a JavaScript framework like D3.js which 
 has an added advantage of being free and presentable easily in a website. I will 
 discuss a implementation using open-source JavaScript libraries in my next&amp;nbsp;post.&lt;/p&gt;
 &lt;/li&gt;
-&lt;/ul&gt;</summary><category term="data science"></category><category term="visualization"></category><category term="R"></category><category term="kaggle"></category></entry></feed>
+&lt;/ul&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><category term="data science"></category><category term="visualization"></category><category term="R"></category><category term="kaggle"></category></entry></feed>
