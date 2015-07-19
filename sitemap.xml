@@ -5,29 +5,36 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://mathusuthan.ml/</loc>
-<lastmod>2015-07-18T20:15:21-00:00</lastmod>
+<lastmod>2015-07-19T20:49:28-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://mathusuthan.ml/archives.html</loc>
-<lastmod>2015-07-18T20:15:21-00:00</lastmod>
+<lastmod>2015-07-19T20:49:28-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://mathusuthan.ml/tags.html</loc>
-<lastmod>2015-07-18T20:15:21-00:00</lastmod>
+<lastmod>2015-07-19T20:49:28-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://mathusuthan.ml/categories.html</loc>
-<lastmod>2015-07-18T20:15:21-00:00</lastmod>
+<lastmod>2015-07-19T20:49:28-00:00</lastmod>
 <changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://mathusuthan.ml/random-readings-for-the-week-of-july-19-2015.html</loc>
+<lastmod>2015-07-19T21:20:00+02:00</lastmod>
+<changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
@@ -61,7 +68,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://mathusuthan.ml/category/miscellaneous.html</loc>
-<lastmod>2015-07-12T10:20:00+00:09</lastmod>
+<lastmod>2015-07-19T21:20:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -74,6 +81,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://mathusuthan.ml/tag/reinforcement-learning.html</loc>
+<lastmod>2015-07-19T21:20:00+00:09</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://mathusuthan.ml/tag/courseware.html</loc>
 <lastmod>2015-07-12T10:20:00+00:09</lastmod>
 <changefreq>daily</changefreq>
@@ -81,8 +95,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://mathusuthan.ml/tag/kaggle.html</loc>
-<lastmod>2015-07-16T07:30:00+00:09</lastmod>
+<loc>http://mathusuthan.ml/tag/outlier-detection.html</loc>
+<lastmod>2015-07-19T21:20:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -102,8 +116,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://mathusuthan.ml/tag/r.html</loc>
-<lastmod>2015-07-16T07:30:00+00:09</lastmod>
+<loc>http://mathusuthan.ml/tag/kaggle.html</loc>
+<lastmod>2015-07-19T21:20:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -116,14 +130,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://mathusuthan.ml/tag/machine-learning.html</loc>
-<lastmod>2015-07-12T10:20:00+00:09</lastmod>
+<loc>http://mathusuthan.ml/tag/data-architecture.html</loc>
+<lastmod>2015-07-19T21:20:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://mathusuthan.ml/tag/books.html</loc>
+<lastmod>2015-07-19T21:20:00+00:09</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://mathusuthan.ml/tag/r.html</loc>
+<lastmod>2015-07-16T07:30:00+00:09</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://mathusuthan.ml/tag/machine-learning.html</loc>
 <lastmod>2015-07-12T10:20:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
