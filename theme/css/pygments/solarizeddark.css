@@ -1,5 +1,5 @@
 .highlight pre .hll { background-color: #ffffcc }
-.highlight pre, .highlighttable pre { background: #002b36; color: #839496 }
+.highlight pre, .highlighttable pre { background: #002b36 url("/images/noise3.png?1395516324") repeat scroll left top; color: #839496 }
 .highlight pre .c { color: #586e75; font-style: italic } /* Comment */
 .highlight pre .err { color: #dc322f } /* Error */
 .highlight pre .g { color: #839496 } /* Generic */
